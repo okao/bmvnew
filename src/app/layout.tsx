@@ -4,7 +4,6 @@ import "@/styles/mdx.css"
 import * as React from "react"
 import type { Metadata, Viewport } from "next"
 import { env } from "@/env.mjs"
-import { Analytics } from "@vercel/analytics/react"
 
 import { siteConfig } from "@/config/site"
 import { SmoothScrollProvider } from "@/providers/smooth-scroll-provider"
@@ -84,7 +83,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
             >
               <div>{children}</div>
               <Toaster />
-              <Analytics />
+              {/* <Analytics /> */}
               <TailwindIndicator />
             </ThemeProvider>
           </SmoothScrollProvider>
