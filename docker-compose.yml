@@ -1,0 +1,25 @@
+version: '3.9'
+services:
+  postgres:
+    container_name: bmv_next14_postgres_v2
+    platform: linux/x86_64
+    image: postgres:14
+    env_file:
+      - .env
+    ports:
+      - ${POSTGRES_PORT}:5432
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - app-network-v2
+
+volumes:
+  postgres_data:
+
+networks:
+  app-network-v2:
+    driver: bridge
