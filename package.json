@@ -10,7 +10,7 @@
   },
   "scripts": {
     "dev": "contentlayer build && next dev",
-    "build": "next build",
+    "build": "contentlayer build && next build",
     "start": "next start",
     "postinstall": "bunx prisma generate",
     "db": "bunx prisma",
