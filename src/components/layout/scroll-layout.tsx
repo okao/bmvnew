@@ -1,3 +1,5 @@
+import { Inter } from "next/font/google"
+
 import {
   fontHeading,
   mvAanamu,
@@ -6,6 +8,12 @@ import {
   mvWaheed,
 } from "@/config/fonts"
 import { cn } from "@/lib/utils"
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  adjustFontFallback: false,
+})
 
 export default function ScrollLayout({
   children,
@@ -17,11 +25,7 @@ export default function ScrollLayout({
       <div
         className={cn(
           "w-full bg-background bg-gradient-to-r from-background to-pink-400/10 font-sans antialiased",
-          fontHeading.variable,
-          mvAanamu.variable,
-          mvFaseyha.variable,
-          mvRasmee.variable,
-          mvWaheed.variable
+          inter.className
         )}
       >
         {children}
