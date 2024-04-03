@@ -5,18 +5,20 @@ import { PrismaClient } from "@prisma/client"
 let db: PrismaClient
 
 //check if we are running in production mode
-if (process.env.NODE_ENV === "production") {
-  db = new PrismaClient()
-} else {
-  //check if there is already a connection to the database
-  if (!global.db) {
-    global.db = new PrismaClient()
-  }
-  //use the existing connection
-  db = global.db
-}
+// @ts-nocheck
+// if (process.env.NODE_ENV === "production") {
+
+// } else {
+//   //check if there is already a connection to the database
+//   if (!global.db) {
+//     global.db = new PrismaClient()
+//   }
+//   //use the existing connection
+//   db = global.db
+// }
 
 async function GetHandler(req: any, res: NextResponse) {
+  db = new PrismaClient()
   revalidatePath("/api/posts")
 
   //delay the response by 5 second
@@ -28,10 +30,10 @@ async function GetHandler(req: any, res: NextResponse) {
   const search = url.searchParams.get("search")
   const direction = url.searchParams.get("direction")
   let offset = url.searchParams.get("from")
-    ? parseInt(url.searchParams.get("from") as string)
+    ? parseInt(url.searchParams.get("from"))
     : 0
   const limit = url.searchParams.get("limit")
-    ? parseInt(url.searchParams.get("limit") as string)
+    ? parseInt(url.searchParams.get("limit"))
     : 10
 
   const where = search

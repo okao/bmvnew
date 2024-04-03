@@ -2,7 +2,6 @@
 
 import React from "react"
 import {
-  FacebookIcon,
   FacebookShareButton,
   LinkedinIcon,
   LinkedinShareButton,
@@ -27,7 +26,7 @@ const ShareButton = ({
   title: string
   summary: string
 }) => {
-  const SButton = ({ style }) => {
+  const SButton = ({ style }: { style: React.CSSProperties }) => {
     switch (type) {
       case "facebook":
         return (

@@ -3,6 +3,7 @@ import "@/styles/mdx.css"
 
 import * as React from "react"
 import type { Metadata, Viewport } from "next"
+import { Inter } from "next/font/google"
 import { env } from "@/env.mjs"
 
 import { siteConfig } from "@/config/site"
@@ -12,6 +13,12 @@ import { cn } from "@/lib/utils"
 import { Toaster } from "@/components/ui/toaster"
 import ScrollLayout from "@/components/layout/scroll-layout"
 import { TailwindIndicator } from "@/components/tailwind-indicator"
+
+const inter = Inter({
+  subsets: ["latin"],
+  display: "swap",
+  adjustFontFallback: false,
+})
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -72,7 +79,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en">
-      <body>
+      <body className={inter.className}>
         <ScrollLayout>
           <SmoothScrollProvider>
             <ThemeProvider

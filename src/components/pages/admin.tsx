@@ -41,19 +41,22 @@ export default function AdminPage() {
     mainImage: "",
     tags: [] as string[],
   } as ArticleMain)
-  const [otherFields, setOtherFields] = useState([])
+  const [otherFields, setOtherFields] = useState<ArticleMain[]>(
+    [] as ArticleMain[]
+  )
 
-  const handleUpdate = (data) => {
+  const handleUpdate = (data: ArticleMain) => {
     // console.log("Handle Update", data)
     setFormData(data)
 
-    const currentFields = otherFields
+    // let currentFields = otherFields
 
     //from data?.fields
     if (data?.field) {
-      currentFields.push(data?.field)
+      // currentFields.push(
 
-      setOtherFields(currentFields)
+      // )
+      setOtherFields([...otherFields, data])
     }
 
     console.log("Handle Update", formData)
@@ -114,7 +117,7 @@ export default function AdminPage() {
                 "heading4",
                 "heading5",
                 "heading6",
-              ].includes(field?.type) && (
+              ].includes(field?.field?.type as string) && (
                 <div
                   key={index}
                   className="flex justify-between border-b dark:border-slate-600"
@@ -126,7 +129,7 @@ export default function AdminPage() {
                         mvRasmee.className
                       )}
                     >
-                      {field?.value}
+                      {field?.field?.value as string}
                     </p>
                   </div>
                   <div>
@@ -149,14 +152,18 @@ export default function AdminPage() {
 
           {otherFields?.map(
             (field, index) =>
-              ["tweet"].includes(field?.type) && (
+              ["tweet"].includes(field?.field?.type as string) && (
                 <div
                   key={index}
                   className="flex justify-between border-b dark:border-slate-600"
                 >
                   <div>
                     <Tweet
-                      id={field?.value?.match(/\/status\/(\d+)/)?.[1]}
+                      id={
+                        field?.field?.value?.match(
+                          /\/status\/(\d+)/
+                        )?.[1] as string
+                      }
                       // components={TwitterComponent}
                     />
                   </div>

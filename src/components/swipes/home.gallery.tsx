@@ -23,10 +23,10 @@ import { mvAanamu, mvRasmee } from "@/config/fonts"
 const HomeGallery = () => {
   const progressCircle = useRef(null)
   const progressContent = useRef(null)
-  const onAutoplayTimeLeft = (s, time, progress) => {
-    progressCircle.current.style.setProperty("--progress", 1 - progress)
-    progressContent.current.textContent = `${Math.ceil(time / 1000)}s`
-  }
+  // const onAutoplayTimeLeft = (s: unknown, time: number, progress: number) => {
+  //   progressCircle.current.style.setProperty("--progress", String(1 - progress))
+  //   progressContent.current.textContent = `${Math.ceil(time / 1000)}s`
+  // }
 
   return (
     <div className="mx-auto py-8 md:container">
@@ -42,7 +42,7 @@ const HomeGallery = () => {
         }}
         navigation={true}
         modules={[Autoplay, Pagination, Navigation]}
-        onAutoplayTimeLeft={onAutoplayTimeLeft}
+        // onAutoplayTimeLeft={}
         className="ltr relative w-full bg-gray-900"
       >
         <SwiperSlide>

@@ -39,7 +39,7 @@ export function Header() {
             <IoIosSearch className="text-xl text-gray-700 dark:text-gray-300 md:hidden lg:flex" />
           </Link>
           <Navigation navItems={siteConfig.navItems} />
-          <LogoImage logotheme />
+          <LogoImage logotheme={null} />
         </div>
 
         <div className="flex items-center justify-center">

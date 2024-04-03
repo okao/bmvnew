@@ -1,6 +1,6 @@
 import React from "react"
 
-const AdBanner = ({ src, href }) => {
+const AdBanner = ({ src, href }: { src: string; href: string }) => {
   return (
     <div>
       <a

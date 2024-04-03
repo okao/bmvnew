@@ -10,7 +10,7 @@ import { siteConfig } from "@/config/site"
 import logo from "../../../public/logos/logo.svg"
 import darkLogo from "../../../public/logos/logodark.svg"
 
-const LogoImage = ({ logotheme = null }) => {
+const LogoImage = ({ logotheme = null }: { logotheme: string | null }) => {
   const { theme } = useTheme()
   const router = useRouter()
 

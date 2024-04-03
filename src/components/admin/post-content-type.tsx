@@ -43,7 +43,11 @@ export type ArticleMain = {
   }[]
 }
 
-const PostContentType = ({ onDataUpdate }) => {
+const PostContentType = ({
+  onDataUpdate,
+}: {
+  onDataUpdate: (data: ArticleMain) => void
+}) => {
   const [articleMain, setArticleMain] = React.useState<ArticleMain>({
     title: "",
     mainImage: "",
@@ -99,7 +103,7 @@ const PostContentType = ({ onDataUpdate }) => {
     { value: "tweet", label: "Tweet" },
   ]
 
-  const onFieldChange = (e) => {
+  const onFieldChange = (e: string) => {
     setField({ type: e, value: "" })
   }
 
